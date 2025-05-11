@@ -1,0 +1,15 @@
+Vehicle (main node)
+├── SuspensionFL
+│   ├── TireFL (RigidBody ou Node3D)
+│   │   ├── TirePhysics.gd (script)
+│   │   ├── CurveSlipAngle (Resource)
+│   │   ├── CurveSlipRatio
+│   │   ├── CurveLoadSensitivity
+│   │   ├── CurveCamberEffect
+│   │   ├── CurveDeformation
+│   │   ├── CurveVelocitySensitivity
+│   │   ├── CurveSelfAlignTorque
+│   │   ├── CurveLateralGripFalloff
+│   │   ├── CurveCombinedSlipCorrection
+│   │   ├── CurveCamberStiffness
+│   │   └── CurveGripLimitOverSlip
