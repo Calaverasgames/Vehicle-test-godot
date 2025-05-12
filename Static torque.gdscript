@@ -1,0 +1,2 @@
+if current_speed < 0.5:
+    steering_resistance = resistance_curve.sample(abs(steering_angle))
