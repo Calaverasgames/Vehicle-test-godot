@@ -1,0 +1,1 @@
+var sat_scale = sat_speed_curve.sample(current_speed)
