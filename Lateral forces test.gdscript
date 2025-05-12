@@ -1,0 +1,10 @@
+func calculate_lateral_force(slip_angle_deg: float, load_fz: float) -> float:
+	var deformation_factor = load_deformation_curve.sample(load_fz)
+	var scaled_slip = slip_angle_deg / deformation_factor
+	
+	# Limita slip para a faixa da curva
+	var clamped_slip = clamp(scaled_slip, -30, 30)
+	var normalized_force = slip_angle_curve.sample(clamped_slip)
+	
+	# Retorna força lateral multiplicada pela carga
+	return normalized_force * load_fz
