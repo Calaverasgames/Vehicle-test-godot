@@ -1,0 +1,12 @@
+var sat_curve_slip = Curve.new()
+var sat_curve_load = Curve.new()
+var sat_curve_speed = Curve.new()
+
+# Adicione pontos às curvas conforme os exemplos acima
+# (pode ser feito no editor ou via script)
+
+func calculate_sat(slip_angle: float, load: float, speed: float) -> float:
+    var base_torque = sat_curve_slip.sample(slip_angle)
+    var load_multiplier = sat_curve_load.sample(load)
+    var speed_multiplier = sat_curve_speed.sample(speed)
+    return base_torque * load_multiplier * speed_multiplier
