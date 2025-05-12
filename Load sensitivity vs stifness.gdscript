@@ -1,0 +1,26 @@
+# LoadSlipStiffnessCurve.gd
+extends Resource
+class_name LoadSlipStiffnessCurve
+
+# Tabela bidimensional: load -> curva(slip) -> stiffness
+var stiffness_map = {} # Dictionary: { load_value: Curve }
+
+func add_curve_for_load(load: float, slip_curve: Curve) -> void:
+    stiffness_map[load] = slip_curve
+
+func evaluate(load: float, slip: float) -> float:
+    var closest_load = get_closest_load(load)
+    if closest_load in stiffness_map:
+        return stiffness_map[closest_load].interpolate_baked(slip)
+    return 0.0
+
+func get_closest_load(target_load: float) -> float:
+    var keys = stiffness_map.keys()
+    var closest = keys[0]
+    var min_diff = abs(target_load - closest)
+    for key in keys:
+        var diff = abs(target_load - key)
+        if diff < min_diff:
+            closest = key
+            min_diff = diff
+    return closest
