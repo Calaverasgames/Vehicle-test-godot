@@ -1,0 +1,5 @@
+var slip_factor = slip_curve.evaluate(slip_angle)
+var load_factor = load_curve.evaluate(load)
+var camber_factor = camber_curve.evaluate(camber)
+
+var lateral_force = slip_factor * load_factor * camber_factor * max_lateral_force
