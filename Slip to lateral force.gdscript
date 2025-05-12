@@ -1,0 +1,10 @@
+# SlipAngleToLateralForce.gd
+extends CurveCalculator
+
+func setup_curve():
+    curve.add_point(Vector2(-10.0, -1.0))
+    curve.add_point(Vector2(-5.0, -0.8))
+    curve.add_point(Vector2(0.0, 0.0))
+    curve.add_point(Vector2(5.0, 0.8))
+    curve.add_point(Vector2(10.0, 1.0))
+    curve.bake()
