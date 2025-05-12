@@ -1,0 +1,49 @@
+extends Resource
+
+class_name TirePhysics
+# Declare suas curvas aqui
+@export var slip_angle_curve: Curve
+@export var slip_ratio_curve: Curve
+@export var load_curve: Curve
+@export var camber_curve: Curve
+@export var compression_curve: Curve
+@export var velocity_curve: Curve
+
+# Limites de normalização
+const SLIP_ANGLE_MIN = -15.0
+const SLIP_ANGLE_MAX = 15.0
+
+const SLIP_RATIO_MIN = -1.0
+const SLIP_RATIO_MAX = 1.0
+
+const LOAD_MIN = 0.0      # em kN
+const LOAD_MAX = 10.0
+
+const CAMBER_MIN = -10.0
+const CAMBER_MAX = 10.0
+
+const COMPRESSION_MIN = 0.0
+const COMPRESSION_MAX = 1.0
+
+const VELOCITY_MIN = 0.0
+const VELOCITY_MAX = 450.0   # km/h
+
+func _normalize(value: float, min_val: float, max_val: float) -> float:
+    return clamp((value - min_val) / (max_val - min_val), 0.0, 1.0)
+
+func sample_curve(value: float, min_val: float, max_val: float, curve: Curve) -> float:
+    var t = _normalize(value, min_val, max_val)
+    return curve.sample(t)
+
+# Exemplo de função combinada que calcula multiplicadores individuais
+func get_lateral_force_factor(slip_angle: float, load: float, camber: float) -> float:
+    var sa = sample_curve(slip_angle, SLIP_ANGLE_MIN, SLIP_ANGLE_MAX, slip_angle_curve)
+    var ld = sample_curve(load, LOAD_MIN, LOAD_MAX, load_curve)
+    var cb = sample_curve(camber, CAMBER_MIN, CAMBER_MAX, camber_curve)
+    return sa * ld * cb # ou ajuste de acordo com o modelo
+
+func get_longitudinal_force_factor(slip_ratio: float, load: float, velocity: float) -> float:
+    var sr = sample_curve(slip_ratio, SLIP_RATIO_MIN, SLIP_RATIO_MAX, slip_ratio_curve)
+    var ld = sample_curve(load, LOAD_MIN, LOAD_MAX, load_curve)
+    var vel = sample_curve(velocity, VELOCITY_MIN, VELOCITY_MAX, velocity_curve)
+    return sr * ld * vel
