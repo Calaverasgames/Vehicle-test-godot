@@ -1,0 +1,5 @@
+var base_fy = slip_curve.get_value(slip_angle)
+var load_multiplier = load_curve.get_value(normal_load)
+var camber_multiplier = camber_curve.get_value(camber_angle)
+
+var final_fy = base_fy * load_multiplier * camber_multiplier
