@@ -1,0 +1,2 @@
+# Força de frenagem afeta suspensão dianteira
+front_left_suspension.apply_force(-front_left_tire.fx)
