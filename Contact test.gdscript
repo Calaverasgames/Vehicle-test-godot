@@ -1,0 +1,7 @@
+if tire_in_contact:
+    suspension.update(delta)
+    tire.update(delta, suspension.vertical_load, speed, slip_angle)
+    apply_forces_to_chassis(tire.fy, tire.fx, tire.mz)
+else:
+    tire.fx = 0
+    tire.fy = 0
