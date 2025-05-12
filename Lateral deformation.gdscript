@@ -1,0 +1,7 @@
+var slip_angle_curve := Curve.new()
+# Exemplo: entrada em graus, saída normalizada (de -1 a 1)
+slip_angle_curve.add_point(Vector2(-30, -0.6))
+slip_angle_curve.add_point(Vector2(-15, -1.0))
+slip_angle_curve.add_point(Vector2(0, 0))
+slip_angle_curve.add_point(Vector2(15, 1.0))
+slip_angle_curve.add_point(Vector2(30, 0.6))
