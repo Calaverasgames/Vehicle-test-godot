@@ -1,0 +1,4 @@
+var camber_curve := Curve.new()
+camber_curve.add_point(Vector2(-10, -0.15))  # camber negativo aumenta Fy negativa
+camber_curve.add_point(Vector2(0, 0))
+camber_curve.add_point(Vector2(10, 0.15))
