@@ -1,0 +1,12 @@
+# Pré-carregadas no _ready()
+var slip_angle_curve: Curve
+var load_curve: Curve
+var camber_curve: Curve
+
+# Durante simulação:
+func calculate_lateral_force(slip_angle: float, load: float, camber: float) -> float:
+    var slip = slip_angle_curve.sample(slip_angle)
+    var load_factor = load_curve.sample(load)
+    var camber_factor = camber_curve.sample(camber)
+    
+    return slip * load_factor * camber_factor * max_lateral_force
