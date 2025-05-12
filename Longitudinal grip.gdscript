@@ -1,0 +1,4 @@
+var slip_ratio_curve := Curve.new()
+slip_ratio_curve.add_point(Vector2(-1.0, -0.9))  # frenagem máxima
+slip_ratio_curve.add_point(Vector2(0.0, 0.0))
+slip_ratio_curve.add_point(Vector2(1.0, 0.9))   # tração máxima
