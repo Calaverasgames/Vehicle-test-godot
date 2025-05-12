@@ -1,0 +1,4 @@
+for wheel in wheels:
+    var fz = wheel.suspension.update(delta)
+    wheel.tire.update(delta, fz, wheel.slip_angle, car_speed)
+    chassis.apply_force_at_position(wheel.tire.fx, wheel.position)
