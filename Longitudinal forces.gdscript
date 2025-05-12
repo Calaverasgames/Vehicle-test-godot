@@ -1,0 +1,2 @@
+# Exemplo de força longitudinal (Fx) em função da velocidade e carga
+var longitudinal_force = calculate_longitudinal_force(load, velocity)
