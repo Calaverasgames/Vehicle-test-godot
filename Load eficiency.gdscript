@@ -1,0 +1,4 @@
+var load_sensitivity_curve := Curve.new()
+load_sensitivity_curve.add_point(Vector2(500, 0.8))   # baixa carga, menos aderência
+load_sensitivity_curve.add_point(Vector2(3000, 1.0))  # ideal
+load_sensitivity_curve.add_point(Vector2(6000, 0.95)) # sobrecarga, aderência decai
