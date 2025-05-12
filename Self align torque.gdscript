@@ -1,0 +1,7 @@
+func calculate_sat(slip_angle: float, vertical_load: float, speed: float, camber: float) -> float:
+    var angle_torque = sat_curve.sample(slip_angle)
+    var load_effect = load_curve.sample(vertical_load)
+    var speed_scale = clamp(speed / 150.0, 0.0, 1.0)
+    var camber_effect = camber_curve.sample(camber)
+
+    return angle_torque * load_effect * speed_scale * camber_effect
