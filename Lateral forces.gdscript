@@ -1,0 +1,4 @@
+# Exemplo de cálculo da força lateral baseada no Slip Angle
+var slip_angle = get_slip_angle()  # Pode ser calculado com base na direção do veículo vs. da roda
+var load = get_vertical_load()  # Força vertical (carga sobre o pneu)
+var lateral_force = slip_force_curve.evaluate(slip_angle)  # Usando a curva de slip angle
