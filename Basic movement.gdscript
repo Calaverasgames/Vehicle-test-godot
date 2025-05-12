@@ -1,0 +1,9 @@
+# Equações de movimento simples
+var acceleration = (lateral_force + longitudinal_force) / vehicle_mass
+var steering = calculate_steering(input_angle, lateral_force)
+
+# Atualização da velocidade
+velocity += acceleration * delta
+
+# Atualização da posição
+position += velocity * delta
