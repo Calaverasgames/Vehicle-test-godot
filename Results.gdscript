@@ -1,0 +1,17 @@
+func calculate_forces(slip_angle, slip_ratio, fz, camber, speed):
+	var load_factor = load_sensitivity_curve.sample(fz)
+	var deformation_factor = structural_deformation_curve.sample(fz)
+	var slip_scaled = slip_angle / deformation_factor
+	var base_fy = slip_angle_curve.sample(clamp(slip_scaled, -30, 30))
+	var camber_adjust = camber_curve.sample(camber)
+	var speed_factor = speed_sensitivity_curve.sample(speed)
+	
+	var total_fy = (base_fy + camber_adjust) * fz * load_factor * speed_factor
+	var total_fx = slip_ratio_curve.sample(slip_ratio) * fz * load_factor * speed_factor
+	var align_torque = aligning_torque_curve.sample(slip_angle) * fz * load_factor
+	
+	return {
+		"fx": total_fx,
+		"fy": total_fy,
+		"mz": align_torque
+	}
