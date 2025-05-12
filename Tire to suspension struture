@@ -1,0 +1,27 @@
+class Suspension:
+    var spring_force
+    var damper_force
+    var vertical_load
+    var compression_ratio
+
+    func update(delta):
+        # Calcula nova carga vertical sobre o pneu
+        vertical_load = calculate_spring_and_damper_forces(...)
+        return vertical_load
+
+
+class Tire:
+    var slip_angle
+    var camber
+    var vertical_load
+    var fx
+    var fy
+
+    func update(delta, vertical_load, speed, slip_angle):
+        self.vertical_load = vertical_load
+        self.slip_angle = slip_angle
+
+        # Avalia curvas
+        var slip = slip_curve.evaluate(slip_angle)
+        var load = load_curve.evaluate(vertical_load)
+        fy = slip * load * max_fy
