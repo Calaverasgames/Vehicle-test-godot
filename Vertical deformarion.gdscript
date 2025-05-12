@@ -1,0 +1,5 @@
+var load_deformation_curve := Curve.new()
+# Exemplo: carga vertical (em N), saída em fator de rigidez (0 a 1)
+load_deformation_curve.add_point(Vector2(1000, 0.8))  # pneu macio
+load_deformation_curve.add_point(Vector2(3000, 1.0))  # rigidez base
+load_deformation_curve.add_point(Vector2(5000, 1.2))  # pneu mais duro
