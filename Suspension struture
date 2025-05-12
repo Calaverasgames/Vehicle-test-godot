@@ -1,0 +1,12 @@
+Input (terreno + velocidade + direção + força motor) 
+    ↓
+Suspensão calcula Fz (carga sobre o pneu)
+    ↓
+Pneu usa Fz, slip angle, camber para calcular forças Fx, Fy, Mz
+    ↓
+Essas forças retornam à suspensão e chassi, afetando:
+    - Compressão
+    - Transferência lateral/longitudinal
+    - Vibração e resposta do corpo do carro
+    ↓
+Suspensão recalcula Fz (retroalimentação)
